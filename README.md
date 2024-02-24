@@ -1,6 +1,6 @@
-# Project Work (2)
+# Project Work II
 
-- Topic: **Webdevelopment with Streamlit and Python**
+- Topic: **Web Development with Streamlit and Python**
 - Student: **Tim Riffelmacher**
 - Supervisor: **Prof. Dr.-Ing. Holger Vogelsang**
 - Begin: **25.09.2023**
@@ -9,13 +9,14 @@
 
 1. [Idea](#idea)
 2. [Streamlit](#streamlit)
-3. [Project Structure](#project-structure)
-4. [Installation](#installation)
-5. [Manual](#manual)
-6. [Evaluation](#evaluation)  
-   6.1 [Advantages](#advantages)  
-   6.2 [Disadvantages](#disadvantages)
-7. [Summary](#summary)
+3. [Further Technology](#further-technology)
+4. [Project Structure](#project-structure)
+5. [Installation](#installation)
+6. [Manual](#manual)
+7. [Evaluation](#evaluation)  
+   7.1 [Advantages](#advantages)  
+   7.2 [Disadvantages](#disadvantages)
+8. [Summary](#summary)
 
 ## Idea
 
@@ -23,15 +24,20 @@ The primary objective is to create a web application designed to assist users in
 
 ## Streamlit
 
-The implementation of the web application is designated to be executed using Streamlit, a Python package renowned for its rapid and straightforward web application development capabilities. According to developers, Streamlit excels in visually preparing and presenting data through reports or dashboards. Throughout the project's implementation, an assessment will be conducted to gauge Streamlit's suitability for the specified task. Furthermore, a comprehensive evaluation will be documented at a later stage.
+The implementation of the web application is done using [Streamlit](https://streamlit.io/), a Python package renowned for its rapid and straightforward web application development capabilities. According to developers, Streamlit excels in visually preparing and presenting data through reports or dashboards. Throughout the project's implementation, an assessment will be conducted to test Streamlit's suitability for implementing the specified project idea. A comprehensive evaluation will be documented at a later stage.
+
+## Further Technology
+
+Two notable technologies, in addition to Streamlit, are employed in the web application. Firstly, [Supabase](https://supabase.com/) serves as a Backend-as-a-Service, allowing the application to persist data in a relational database. It enhances data security through [Row-Level-Security](https://supabase.com/docs/guides/auth/row-level-security) and provides an authentication mechanism adaptable to various web applications. Secondly, the [Yahoo Finance](https://finance.yahoo.com/) API is utilized to retrieve information and stock prices about companies. This is facilitated by the Python package [yfinance](https://pypi.org/project/yfinance/), a convenient wrapper for the Yahoo Finance API.
 
 ## Project Structure
 
-In the following the top-level folders and files present in the repository are listed and explained:
+In the following the top-level folders and files present in this repository are explained:
 
 - **.streamlit/** - Environment variables for Streamlit
-- **components/** - Stores reusable componentes (e.g. inputs)
+- **components/** - Stores reusable components (e.g. input fields)
 - **pages/** - Defines the pages to be displayed
+- **resources/** - Holds resources (e.g. images) regarding the documentation
 - **utils/** - Stores reusable functionality (e.g. db-connection)
 - **.gitignore** - Configures Git
 - **Dashboard.py** - The entry point of the web application
@@ -40,17 +46,17 @@ In the following the top-level folders and files present in the repository are l
 
 ## Installation
 
-Firstly, ensure that [Python3](https://www.python.org/downloads/) is installed on your system. Afterwards, proceed to install the required dependencies by executing the command `pip3 install -r requirements.txt` in the root directory of the repository. Once the dependencies are installed, initiate the web application by executing `streamlit run pages/Dashboard.py`. If the streamlit command is not recognized, you may need to add it to the `$PATH`, or consider creating a virtual Python environment.
+Firstly, ensure that [Python3](https://www.python.org/downloads/) is installed on your system. Afterwards, proceed to install the required dependencies by executing the command `pip3 install -r requirements.txt` in the root directory of the repository. Once the dependencies are installed, initiate the web application by executing `streamlit run pages/Dashboard.py`. If the streamlit command is not recognized, you may need to add it to the `$PATH`, or consider creating a [virtual Python environment](https://docs.python.org/3/library/venv.html).
 
 ## Manual
 
-This section describes what functionality the web application offers and how it can be utilized.
+This chapter explains the functionalities offered by the web application and provides guidance on how to correctly utilize them.
 
 ### Navigation Bar
 
 ![](./resources/navigation_bar.png)
 
-On the left side of the web application, a navigation bar is presented, facilitating navigation among the five distinct pages, each of which is elaborated upon in the following sections.
+On the left side of the web application, a navigation bar is presented, facilitating navigation among the five distinct pages, each of which is elaborated upon in the following.
 
 ### Dashboard Page
 
@@ -60,21 +66,62 @@ This serves as the entry point for the web application. Analogous to the navigat
 
 ### Stocks Page
 
+![](./resources/stocks_info.png)
+
+On this page, users can explore stock prices and the latest news for various companies. At the top of the page, users can select the specific company they wish to investigate. Below this, a section with general information, including details such as the location of the company, is displayed. Further down the page, users will find the _Market_ section.
+
+![](./resources/stocks_market_chart.png)
+
+In this section, users can observe stock prices. Begin by selecting the type of aggregation, which dictates the data points to be displayed in the chart:
+
+- **Open:** The stock price at the beginning of one day.
+- **High:** The highest stock price of one day.
+- **Low:** The lowest stock price of one day.
+- **Close:** The stock price at the end of the day.
+
+Following that, set the desired time interval for analysis. You can now observe trends depicting the stock's performance and traded volume within the selected timeframe. Optionally, switch to percentage view by activating the _In %_ toggle. At the bottom, the line chart illustrates the fluctuations in stock price over time. Additionally, there is an option to shift the graph to zero by activating the _To baseline_ toggle. For users preferring an Excel-like overview instead of a chart, they can switch to the _Table_ tab.
+
+![](./resources/stocks_market_table.png)
+
+Here all pertinent numbers within the selected time span is presented.
+
+If you continue scrolling down, you will reach the _News_ section.
+
+![](./resources/stocks_market_news.png)
+
+In this section, users are presented with a list of the latest news concerning the selected company. Links are also provided for those who wish to delve deeper into each article.
+
+### Wallet Page
+
+![](./resources/wallet_list.png)
+
+On this page, users can track their expenditures (and income). At the top of the page, set the desired time interval for observing financial activities. The bottom section displays a list of expenditures made within this specified timeframe. Clicking on a spending entry expands it, revealing additional details, including any provided reasons, and offering the option to delete it by clicking the _Remove_ button. To add a new spending, go to the top of the list, enter the amount, provide an optional reason, and select a category. Subsequently, click the _Add_ button to save the new entry. For a more detailed analysis of how your total finances have changed over time, navigate to the _Chart_ tab.
+
+![](./resources/wallet_chart.png)
+
+Here a line chart is presented, illustrating the development of your total financial assets over the selected time interval.
+
 ### Network Page
 
 ![](./resources/network_chat.png)
 
-On the network page you can chat with others about finance topics. Therefore select the appropiate channel, write your message and send it. In the chat window the 6 latest messages are displayed. You can delete your own message by pressing on the _Remove_ button in case you made a mistake, so it is to no one visible anymore. Furthermore you can save every message by pressing on the _Star_. From now on it stored in your saved messages tab.
+On the network page, users can engage in discussions with others on finance topics. To do so, they can select the appropriate channel, compose their message, and send it. The chat window displays the six latest messages, and users have the option to delete their own messages by clicking the _Remove_ button, making it no longer visible to others. Additionally, messages can be saved by clicking the _Star_ button, preserving them in the user's saved messages tab for future reference.
 
 ![](./resources/network_saved_messages.png)
 
-Here you can see your saved messages. You also have the option to remove a message again from your saved ones by pressing on the _Remove_ button.
+In this tab, users can view their saved messages. Moreover, they have the option to remove a message from their saved collection by clicking on the _Remove_ button.
 
 ### Profile Page
 
 ![](./resources/profile.png)
 
 In this section, users can update their personal settings, including their first and last names. The first name is displayed when posting a message on the network page.
+
+### Log In & Sign Up
+
+![](./resources/log_in_sign_up.png)
+
+Access to certain pages, such as _Wallet_, _Network_, and _Profile_, requires user authentication. If not signed in, these pages will display a login form. To gain access, simply log in. If you don't have an account, click on the _No account yet?_ button to register.
 
 ## Evaluation
 
@@ -136,7 +183,13 @@ Consequently, it becomes imperative to proactively establish a dedicated reusabl
 
 #### Missing Control Flow Options
 
-Until a recent update, Streamlit introduced the capability for programmatically altering pages, a feature previously unavailable. However, a persistent challenge remains as rerendering a page using `st.rerun()` is currently not viable within callbacks. The absence of this option poses limitations, particularly in scenarios where a page reload is desired, such as when a refresh button is pressed.
+Until a recent update, Streamlit introduced the capability for programmatically altering pages, a feature previously unavailable. However, a persistent challenge remains as rerendering a page using
+
+```python
+    st.rerun()
+```
+
+is currently not viable within callbacks. The absence of this option poses limitations, particularly in scenarios where a page reload is desired, such as when a refresh button is pressed.
 
 ## Summary
 

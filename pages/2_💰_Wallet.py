@@ -69,7 +69,7 @@ def _render():
                 spending_expander.caption(transaction["reason"])
             def _remove_spending(_transaction=transaction):
                 sb_client.table("transactions").delete().eq("id", _transaction["id"]).execute()
-            spending_expander.button(label="❌ Remove", key=f"key-remove-btn-{transaction['id']}", on_click=_remove_spending, args=(transaction))
+            spending_expander.button(label="❌ Remove", key=f"key-remove-btn-{transaction['id']}", on_click=_remove_spending)
     with spending_area_tabs[1]:
         total_money_course = pd.DataFrame(all_transaction_amounts.data)
         total_money_course["created_at"] = pd.to_datetime(total_money_course["created_at"])
