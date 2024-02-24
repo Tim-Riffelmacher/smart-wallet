@@ -24,7 +24,7 @@ The primary objective is to create a web application designed to assist users in
 
 ## Streamlit
 
-The implementation of the web application is done using [Streamlit](https://streamlit.io/), a Python package renowned for its rapid and straightforward web application development capabilities. According to developers, Streamlit excels in visually preparing and presenting data through reports or dashboards. Throughout the project's implementation, an assessment will be conducted to test Streamlit's suitability for implementing the specified project idea. A comprehensive evaluation will be documented at a later stage.
+The implementation of the web application is done using [Streamlit](https://streamlit.io/), a Python package renowned for its rapid and straightforward web application development capabilities. According to developers, Streamlit excels in visually preparing and presenting data through reports or dashboards. Throughout the project's implementation, an assessment will be conducted to test Streamlit's suitability for implementing the specified project idea. A comprehensive [Evaluation](#evaluation) will be documented at a later stage.
 
 ## Further Technology
 
@@ -62,7 +62,7 @@ On the left side of the web application, a navigation bar is presented, facilita
 
 ![](./resources/dashboard.png)
 
-This serves as the entry point for the web application. Analogous to the navigation bar, it offers access to the remaining four pages. Additionally, it includes a link to the documentation for further reference.
+This serves as the entry point for the web application. Similar to the navigation bar, it offers access to the remaining four pages. Additionally, it includes a link to the documentation for further reference.
 
 ### Stocks Page
 
@@ -83,11 +83,11 @@ Following that, set the desired time interval for analysis. You can now observe 
 
 ![](./resources/stocks_market_table.png)
 
-Here all pertinent numbers within the selected time span is presented.
+Here all important numbers within the selected time span are presented.
 
 If you continue scrolling down, you will reach the _News_ section.
 
-![](./resources/stocks_market_news.png)
+![](./resources/stocks_news.png)
 
 In this section, users are presented with a list of the latest news concerning the selected company. Links are also provided for those who wish to delve deeper into each article.
 
@@ -105,7 +105,7 @@ Here a line chart is presented, illustrating the development of your total finan
 
 ![](./resources/network_chat.png)
 
-On the network page, users can engage in discussions with others on finance topics. To do so, they can select the appropriate channel, compose their message, and send it. The chat window displays the six latest messages, and users have the option to delete their own messages by clicking the _Remove_ button, making it no longer visible to others. Additionally, messages can be saved by clicking the _Star_ button, preserving them in the user's saved messages tab for future reference.
+On the network page, users can engage in discussions with others on finance topics. To do so, they can select the appropriate channel, write their message, and send it. The chat window displays the six latest messages, and users have the option to delete their own messages by clicking the _Remove_ button, making it no longer visible to others. Clicking on the _Refresh_ button catches new messages from others and displays them (This is necessary due to lack of support of asynchronous operations and poor render preformance. More details on this are stated in the [Evaluation](#evaluation)). Additionally, messages can be saved by clicking the _Star_ button, preserving them in the user's _Saved messages_ tab for future reference.
 
 ![](./resources/network_saved_messages.png)
 
@@ -115,7 +115,7 @@ In this tab, users can view their saved messages. Moreover, they have the option
 
 ![](./resources/profile.png)
 
-In this section, users can update their personal settings, including their first and last names. The first name is displayed when posting a message on the network page.
+Here users can update their personal settings, including their first and last names. The first name is displayed when posting a message on the network page.
 
 ### Log In & Sign Up
 
@@ -125,19 +125,19 @@ Access to certain pages, such as _Wallet_, _Network_, and _Profile_, requires us
 
 ## Evaluation
 
-This chapter evaluates the advantages and disadvantages of using Streamlit for developing web applications.
+This section assesses both the advantages and disadvantages of employing Streamlit for the development of web applications. These statements are derived from the development of this specific project idea and may not necessarily be universally applicable to other projects or reflect potential advancements introduced in further updates of Streamlit.
 
 ### Advantages
 
 #### Fast & Easy Development
 
-One of the most significant advantages of using Streamlit lies in its minimal learning curve, allowing users to comprehend its functionality and develop web applications in a short period. The Streamlit Python library is remarkably straightforward, eliminating the need to grasp every intricate concept. Proficiency in implementing components, such as buttons and inputs, along with understanding the control flow of Streamlit (data distribution and management), equips users to create web applications with essential functionality.
+One of the most significant advantages of using Streamlit lies in its minimal learning curve, allowing users to comprehend its functionality and develop web applications in a short period. The Streamlit Python library is remarkably straightforward, eliminating the need to understand every intricate concept. Proficiency in implementing components, such as buttons and inputs, along with understanding the control flow of Streamlit (data distribution and management), equips users to create web applications with essential functionality.
 
 Moreover, Streamlit significantly accelerates the development process. Unlike traditional web application development, there is no requirement to dive into CSS for aesthetic enhancements; Streamlit takes care of design, ensuring a visually appealing interface. Additionally, diverse data types can effortlessly be presented using various chart types, requiring minimal effort on the part of the developer.
 
 #### Data Presentation
 
-As previously highlighted, Streamlit excels in presenting diverse data types through a wide array of chart options. Whether it's simple line charts, scatterplots, or complex graphs, Streamlit accommodates them all. The inclusion of third-party extensions further expands the available charting options, streamlining the development process and enabling developers to concentrate on data processing, rather than spending excessive time on presentation details. Additionally, Streamlit facilitates easy experimentation with different chart types, allowing developers to explore various visualizations without significant time investment.
+As previously highlighted, Streamlit excels in presenting diverse data types through a wide array of chart options. Whether it's simple line charts, scatterplots, or complex graphs, Streamlit supports them all. The inclusion of third-party extensions further expands the available charting options, streamlining the development process and enabling developers to concentrate on data processing, rather than spending time on presentation details. Additionally, Streamlit facilitates easy experimentation with different chart types, allowing developers to explore various visualizations without significant time investment.
 
 Example:
 
@@ -147,52 +147,54 @@ Example:
 
 Result:
 
+![](./resources/line_chart.png)
+
 #### Good Documentation
 
-The Streamlit [documentation](https://docs.streamlit.io/) stands out for its simplicity and clarity. Firstly, it provides a comprehensive introduction that facilitates a clear understanding of Streamlit's main concepts. Secondly, the API guide is notably well-structured and easily understandable, allowing users to quickly locate and access the information they need. Additionally, the documentation offers a convenient [cheatsheet](https://docs.streamlit.io/library/cheatsheet) that provides a rapid overview of the most crucial API calls.
+The Streamlit [documentation](https://docs.streamlit.io/) stands out for its simplicity and clarity. Firstly, it provides a comprehensive introduction that facilitates a clear understanding of Streamlit's main concepts. Secondly, the API guide is well-structured and easily understandable, allowing users to quickly locate and access the information they need. Additionally, the documentation offers a convenient [cheatsheet](https://docs.streamlit.io/library/cheatsheet) that provides a overview of the most crucial API calls.
 
 #### Uniform Design
 
-As mentioned earlier, Streamlit simplifies the design process by eliminating the need to create a design framework or concept, followed by the development of reusable and uniform components (e.g., buttons, inputs, etc.). Instead, Streamlit provides pre-styled components that are ready to use, sparing developers from the initial design groundwork. While all components come with default styles, the Streamlit library offers ample customization options, allowing users to tailor the components to their specific use cases—whether it's changing button labels, adjusting input placeholders, or more.
+As mentioned earlier, Streamlit simplifies the design process by eliminating the need to create a design system or concept, followed by the development of reusable and uniform components (e.g. buttons, input fields, etc.). Instead, Streamlit provides pre-styled components that are ready to use, sparing developers from the initial design groundwork. While all components come with default styles, the Streamlit library offers some customization options, allowing users to adjust the components to their specific use cases — whether it's changing button labels, adjusting input placeholders, or more.
 
-In some instances, it might be beneficial to organize a composition of components into a reusable library, particularly when dealing with repetitive elements like a start-to-end date input across multiple pages, reducing code duplication. Additionally, Streamlit's [theming](https://docs.streamlit.io/library/advanced-features/theming) capabilities allow for global adjustments, enabling users to specify primary and secondary colors, fonts, and other stylistic elements that apply to all Streamlit components.
+In some instances, it might be beneficial to organize a composition of components in a reusable library. Particularly when dealing with repetitive elements like a start-to-end date input across multiple pages, reducing code duplication. Additionally, Streamlit's [theming](https://docs.streamlit.io/library/advanced-features/theming) capabilities allow for global adjustments, enabling users to specify primary and secondary colors, fonts, and other stylistic elements that apply to all Streamlit components.
 
 ### Disadvantages
 
 #### Confusing Session State
 
-In a general context, the rendered pages within Streamlit are inherently stateless. To preserve state information, the utilization of Streamlit's provided [session state](https://docs.streamlit.io/library/api-reference/session-state) becomes imperative. This feature essentially operates as a key-value store with an indefinite growth capacity. Consequently, managing state complexity requires precise documentation to prevent it from spiraling out of control, necessitating clear records of the stored information within the session state.
+In a general context, the rendered pages within Streamlit are inherently stateless. To preserve state information, the utilization of Streamlit's provided [session state](https://docs.streamlit.io/library/api-reference/session-state) becomes imperative. This operates as a key-value store with an indefinite growth capacity. Consequently, managing state complexity requires precise documentation to prevent it from spiraling out of control, necessitating clear records of the stored information within the session state.
 
 #### Poor Styling Options
 
-Regrettably, the Streamlit components exhibit a restricted array of styling options. Primarily, the available choices are confined to two colors—namely, the primary and secondary colors predetermined by the overarching theme. The absence of direct interaction with the underlying CSS of these components leaves developers with no recourse but to resort to crafting pure HTML code for extended customization. For instance, achieving the horizontal centering of a component lacks a straightforward option. Instead, one must resort to a column layout approach, placing the component within the central column and adjusting its width to match that of the container.
+The Streamlit components offer only a restricted array of styling options. Primarily, the available choices are confined to two colors — namely, the primary and secondary color predetermined by the global theme. The absence of direct interaction with the underlying CSS of these components leaves developers with no option but to implement pure HTML code for extended customization. A further example for Streamlit's poor styling options: Achieving the horizontal centering of a component lacks a straightforward option. Instead, the developer must utilize a column layout approach, placing the component within the central column and adjusting its width to match that of the column.
 
 #### Poor Render Performance
 
-Relative to other frameworks facilitating web application development, Streamlit exhibits suboptimal rendering performance. The time required to render a page with comparable components is notably extended compared to frameworks such as [React](https://react.dev/). While this may be tolerable for static pages that necessitate a single loading and rendering instance, the drawback becomes apparent in scenarios demanding frequent page rerendering due to dynamic component changes. In such cases, the prolonged rendering duration may result in user inconvenience and frustration.
+Relative to other frameworks facilitating web application development, Streamlit has suboptimal rendering performance. The time required to render a page is notably extended compared to frameworks such as [React](https://react.dev/). While this may be tolerable for static pages that necessitate a single loading and rendering instance, the drawback becomes apparent in scenarios requiring frequent page rerendering due to dynamic component changes. In such cases, the prolonged rendering duration may result in user frustration.
 
 #### No Real Asynchrony
 
-Unfortunately, Streamlit's support for executing actions in the background is constrained to specific limitations. The prevailing concept dictates that a page achieves full loading status only upon the completion of all background operations. Consequently, the platform does not facilitate the loading of substantial data in the background, followed by asynchronous injection into the page. The inherent constraint is evident in the prolonged rendering times of pages necessitating substantial data retrieval from the backend, leading to potential delays in rendering.
+Unfortunately, Streamlit's support for executing actions in the background is very constrained. The underlying concept dictates that a page achieves the 'fully-loaded' status only upon the completion of all background operations. Consequently, the platform does not facilitate the loading of data in the background, followed by asynchronous injection into the page. Thus rendering times may be intolerably longer.
 
 #### Duplicated Code
 
-Given the functional programming paradigm employed in page development, the propensity for code duplication in Streamlit is notable. The absence of inherent object orientation fails to necessitate thoughtful consideration regarding the decomposition of pages into multiple classes and their interrelations. The dearth of such structural considerations renders the code less amenable to effective testing and reusability.
+Given the functional programming paradigm employed in Streamlit's page development, the trend for code duplication in Streamlit is notable. The absence of object orientation fails to necessitate thoughtful consideration regarding the decomposition of pages into classes and relations. Thus testability and reusability suffer from this.
 
-Consequently, it becomes imperative to proactively establish a dedicated reusable component library early in the development process, one that can be universally applied across all pages. Failure to do so may result in significant challenges during subsequent refactoring endeavors.
+Consequently, it becomes imperative to establish a reusable component library early in the development process, one that can be universally used across all pages. Failure to do so may result in challenges during subsequent refactoring endeavors.
 
 #### Missing Control Flow Options
 
-Until a recent update, Streamlit introduced the capability for programmatically altering pages, a feature previously unavailable. However, a persistent challenge remains as rerendering a page using
+Until a recent update, Streamlit introduced the capability for programmatically changing between pages, a feature previously unavailable. However, another barrier remains as rerendering a page using
 
 ```python
     st.rerun()
 ```
 
-is currently not viable within callbacks. The absence of this option poses limitations, particularly in scenarios where a page reload is desired, such as when a refresh button is pressed.
+is currently not possible within callbacks. The absence of this option poses limitations, particularly in scenarios where a page reload is required, such as when a refresh button is pressed.
 
 ## Summary
 
-In summary, Streamlit serves as an entry-level framework, facilitating the entry of non-technical users into web application development without significant concern for technical intricacies. It provides an extensive collection of reusable components and ensures a cohesive design, imparting a polished look-and-feel to the web application. Moreover, Streamlit excels in effortlessly visualizing large datasets through various chart options.
+In summary, Streamlit serves as an entry-level framework, facilitating the entry of non-technical users into web application development without significant concern for technical details. It provides an extensive collection of reusable components and ensures a cohesive design, imparting a polished look-and-feel to the web application. Moreover, Streamlit excels in effortlessly visualizing large datasets through various chart options.
 
-However, it comes with certain limitations. The framework lacks the flexibility found in other web application frameworks, as it is notably constrained to its predefined components with limited customization options. Additionally, Streamlit falls short in terms of tooling and performance compared to its counterparts. Consequently, Streamlit proves most suitable for scenarios where a static data-presenting web application with minimal interaction requirements is sufficient.
+However, it comes with certain limitations. The framework lacks the flexibility found in other web application frameworks, as it is notably constrained to its predefined components with limited customization options. Additionally, Streamlit falls short in terms of tooling and performance compared to its counterparts. Consequently, Streamlit proves most suitable for scenarios where a static data-presenting web application with minimal interaction requirements is needed.
