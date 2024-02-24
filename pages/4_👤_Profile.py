@@ -1,6 +1,6 @@
 import streamlit as st
 from components.templates.AuthenticatedPage import AuthenticatedPage
-from streamlit_app import sb_client
+from utils.Connection import sb_client
 
 def _render():
     ###

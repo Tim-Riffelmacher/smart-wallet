@@ -1,9 +1,9 @@
 import streamlit as st
-from streamlit_app import sb_client
+from utils.Connection import sb_client
 import datetime
 import datetime
 from components.templates.AuthenticatedPage import AuthenticatedPage
-from streamlit_app import sb_client
+from utils.Connection import sb_client
 
 def _render():
     ask_area_cols = st.columns([0.1, 0.3, 1, 0.2])

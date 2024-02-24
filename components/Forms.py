@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_app import sb_client
+from utils.Connection import sb_client
 
 def render_login_register_form():
     if sb_client.auth.get_session() != None:

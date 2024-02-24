@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_app import sb_client
+from utils.Connection import sb_client
 import asyncio
 
 def AuthenticatedPage(title, sidebar_title, render, rerender = None, rerender_timeout = 5):
