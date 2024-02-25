@@ -5,7 +5,6 @@ from utils.Connection import sb_client
 from utils import Utils
 from zoneinfo import ZoneInfo
 import time
-import pytz
 
 def _render():
     ask_area_cols = st.columns([0.1, 0.3, 1, 0.2])
@@ -66,7 +65,7 @@ def _render():
                             st.toast("Removed message from chat", icon="✅")
                         st.button("❌ Remove", on_click=_remove_message, key=f"key-remove-btn-${latest_message['id']}")
             with chat_message_cols[2]:
-                st.text(Utils.supabase_timestamp_to_datetime(latest_message['created_at']).astimezone(ZoneInfo(time.tzname[0])).strftime('%H::%M'))
+                st.text(Utils.supabase_timestamp_to_datetime(latest_message['created_at']).astimezone(ZoneInfo(time.tzname[0])).strftime('%H:%M'))
                 profiles = sb_client.table("profiles").select("first_name").eq("fk_user_id", latest_message["fk_user_id"]).execute()
                 if len(profiles.data) != 0:
                     st.text(f"({profiles.data[0]['first_name']})")

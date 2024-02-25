@@ -53,4 +53,4 @@ def supabase_timestamp_to_datetime(timestamp):
     """
     Converts timestamp recieved from supabase into usable datetime object.
     """
-    return datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%f+00:00")
+    return datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%f+00:00").replace(tzinfo=datetime.timezone.utc)
