@@ -16,7 +16,7 @@ def _render():
             ("AAPL", "MSFT", "WMT", "SAP", "IBM"))
     with search_area_cols[1]:
         st.caption("Company Name")
-        st.write(f"**{map_ticker_to_company_name(selected_ticker_name)}**")
+        st.markdown(f"**{map_ticker_to_company_name(selected_ticker_name)}**")
 
     ###
     # DIVIDER
@@ -63,11 +63,13 @@ def _render():
     # FILTER SUBAREA
     ###
     st.caption("Filter")
-    filter_area_cols = st.columns(3)
-    selected_agg_method = filter_area_cols[0].selectbox(
-        'Aggregation',
-        ('Open', 'High', 'Low', 'Close'))
-    (selected_start_date, selected_end_date) = render_start_end_date_input(datetime.datetime.today() - datetime.timedelta(days=30), datetime.datetime.today())
+    filter_area_cols = st.columns([0.5, 1])
+    with filter_area_cols[0]:
+        selected_agg_method = filter_area_cols[0].selectbox(
+            'Aggregation',
+            ('Open', 'High', 'Low', 'Close'))
+    with filter_area_cols[1]:
+        (selected_start_date, selected_end_date) = render_start_end_date_input(datetime.datetime.today() - datetime.timedelta(days=30), datetime.datetime.today())
 
     ###
     # TRENDS SUBAREA
@@ -85,10 +87,11 @@ def _render():
     else:
         perfomance_delta = finance_data.iloc[len(finance_data.index) - 1][selected_agg_method] - finance_data.iloc[0][selected_agg_method]
         traded_volume_delta = finance_data.iloc[len(finance_data.index) - 1]['Volume'] - finance_data.iloc[0]['Volume']
-    trend_cols = st.columns(2)
-    trend_cols[0].metric(label="Performance", value=f"{round(finance_data.iloc[0][selected_agg_method], 2)} $", delta=f"{round(perfomance_delta, 2)} {'%' if trends_in_percentage else '$'}")
-    trend_cols[1].metric(label="Traded volume", value=f"{round(finance_data.iloc[0]['Volume'], 2)} $", delta=f"{round(traded_volume_delta, 2)} {'%' if trends_in_percentage else '$'}")
-
+    trend_cols = st.columns([1, 1])
+    with trend_cols[0]:
+        st.metric(label="Performance", value=f"{round(finance_data.iloc[0][selected_agg_method], 2)} $", delta=f"{round(perfomance_delta, 2)} {'%' if trends_in_percentage else '$'}")
+    with trend_cols[1]:
+        st.metric(label="Traded volume", value=f"{round(finance_data.iloc[0]['Volume'], 2)} $", delta=f"{round(traded_volume_delta, 2)} {'%' if trends_in_percentage else '$'}")
 
     ###
     # CHARTS SUBAREA
@@ -119,11 +122,14 @@ def _render():
     ###
     st.subheader("News")
     for news in selected_ticker.news:
-        news_cols = st.columns(3)
-        if "thumbnail" in news:
-            news_cols[0].image(news['thumbnail']['resolutions'][0]["url"], width=150)
-        news_cols[1].write(news['title'])
-        news_cols[1].write(f'by {news["publisher"]}')
-        news_cols[2].write(news["link"])
+        news_cols = st.columns([1, 1, 1])
+        with news_cols[0]:
+            if "thumbnail" in news:
+                st.image(news['thumbnail']['resolutions'][0]["url"], width=150)
+        with news_cols[1]:
+            st.write(news['title'])
+            st.write(f'by {news["publisher"]}')
+        with news_cols[2]:
+            st.write(news["link"])
 
 Page("Stocks", "Get latest stock news", _render)

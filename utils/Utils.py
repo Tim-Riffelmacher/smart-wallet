@@ -1,3 +1,5 @@
+import datetime
+
 def map_transaction_category_to_emoji(category = None):
     """
     Maps the given transaction category to the corresponding emoji.
@@ -46,3 +48,9 @@ def map_aggregation_to_label(aggregation = None):
     if aggregation == None:
         return mappings
     return mappings[aggregation]
+
+def supabase_timestamp_to_datetime(timestamp):
+    """
+    Converts timestamp recieved from supabase into usable datetime object.
+    """
+    return datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%f+00:00")

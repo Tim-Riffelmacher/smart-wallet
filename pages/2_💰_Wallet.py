@@ -6,6 +6,8 @@ import pandas as pd
 import datetime
 from components import Inputs
 from components.templates.AuthenticatedPage import AuthenticatedPage
+from zoneinfo import ZoneInfo
+import time
 
 def _render():
     ###
@@ -43,11 +45,15 @@ def _render():
         # NEW SPENDING SUBAREA
         ###
         new_spending_area_cols = st.columns([1, 1, 1])
-        amount = new_spending_area_cols[0].number_input(label="Amount", step=0.01)
-        reason = new_spending_area_cols[1].text_input(label="Reason", max_chars=250)
-        selected_category = new_spending_area_cols[2].selectbox("Category", options=["Others", "Grocery", "Salary", "Entertainment", "Health", "Transport", "Insurance"])
+        with new_spending_area_cols[0]:
+            amount = st.number_input(label="Amount", step=0.01)
+        with new_spending_area_cols[1]:
+            reason = st.text_input(label="Reason", max_chars=250)
+        with new_spending_area_cols[2]:
+            selected_category = st.selectbox("Category", options=["Others", "Grocery", "Salary", "Entertainment", "Health", "Transport", "Insurance"])
         def _add_new_spending():
             sb_client.table("transactions").insert({"amount": int(amount * 100), "reason": None if reason.strip() == "" else reason.strip(), "category": selected_category }).execute()
+            st.toast("New spending added", icon="✅")
         st.button("➕ Add", type="primary", use_container_width=True, on_click=_add_new_spending)
 
         ###
@@ -56,12 +62,13 @@ def _render():
         old_transaction_date = None
         for transaction in transactions.data:
             spending_day_divider_cols = st.columns([0.25, 1])
-
-            next_transaction_date = datetime.datetime.strptime(transaction["created_at"], "%Y-%m-%dT%H:%M:%S.%f+00:00")
+            next_transaction_date = Utils.supabase_timestamp_to_datetime(transaction["created_at"])
             if old_transaction_date == None or old_transaction_date.date() > next_transaction_date.date():
-                spending_day_divider_cols[0].text("")
-                spending_day_divider_cols[0].text(f"{next_transaction_date.strftime('%a, %d %b')}")
-                spending_day_divider_cols[1].divider()
+                with spending_day_divider_cols[0]:
+                    st.text("")
+                    st.text(f"{next_transaction_date.strftime('%a, %d %b')}")
+                with spending_day_divider_cols[1]:
+                    st.divider()
                 old_transaction_date = next_transaction_date
 
             spending_expander = st.expander(f"**{'🟢' if transaction['amount'] >= 0 else '🔴'} {transaction['amount'] / 100}** $ for {transaction['category']} {Utils.map_transaction_category_to_emoji(transaction['category'])}")
@@ -69,10 +76,11 @@ def _render():
                 spending_expander.caption(transaction["reason"])
             def _remove_spending(_transaction=transaction):
                 sb_client.table("transactions").delete().eq("id", _transaction["id"]).execute()
+                st.toast("Removed spending", icon="✅")
             spending_expander.button(label="❌ Remove", key=f"key-remove-btn-{transaction['id']}", on_click=_remove_spending)
     with spending_area_tabs[1]:
         total_money_course = pd.DataFrame(all_transaction_amounts.data)
-        total_money_course["created_at"] = pd.to_datetime(total_money_course["created_at"])
+        total_money_course["created_at"] = pd.to_datetime(total_money_course["created_at"]).dt.tz_convert(ZoneInfo(time.tzname[0])).dt.tz_localize(None).dt.tz_localize(datetime.timezone.utc)
         total_money_course.set_index("created_at", inplace=True)
         total_money_course["amount"] = total_money_course["amount"] / 100
         total_money_course["amount"] = total_money_course["amount"].cumsum()

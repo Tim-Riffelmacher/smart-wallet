@@ -169,6 +169,8 @@ In a general context, the rendered pages within Streamlit are inherently statele
 
 The Streamlit components offer only a restricted array of styling options. Primarily, the available choices are confined to two colors — namely, the primary and secondary color predetermined by the global theme. The absence of direct interaction with the underlying CSS of these components leaves developers with no option but to implement pure HTML code for extended customization. A further example for Streamlit's poor styling options: Achieving the horizontal centering of a component lacks a straightforward option. Instead, the developer must utilize a column layout approach, placing the component within the central column and adjusting its width to match that of the column.
 
+In addition to that Streamlit produces very unresponsive web applications. Thus making one web application that fits for mobile devices and PC at the same time is hardly achievable.
+
 #### Poor Render Performance
 
 Relative to other frameworks facilitating web application development, Streamlit has suboptimal rendering performance. The time required to render a page is notably extended compared to frameworks such as [React](https://react.dev/). While this may be tolerable for static pages that necessitate a single loading and rendering instance, the drawback becomes apparent in scenarios requiring frequent page rerendering due to dynamic component changes. In such cases, the prolonged rendering duration may result in user frustration.
