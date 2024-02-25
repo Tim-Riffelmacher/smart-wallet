@@ -26,8 +26,8 @@ def AuthenticatedPage(title, sidebar_title, render, rerender = None, rerender_ti
 
         def _show_login_form(show):
             st.session_state["show_login_form"] = show
-        login_area_columns = st.columns([1, 1, 1])
-        with login_area_columns[1]:
+        login_area_cols = st.columns([1, 1, 1])
+        with login_area_cols[1]:
             email = st.text_input("Email")
             password = st.text_input("Password", type="password")
             st.markdown("") 

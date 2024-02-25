@@ -65,7 +65,7 @@ def _render():
             next_transaction_date = Utils.supabase_timestamp_to_datetime(transaction["created_at"])
             if old_transaction_date == None or old_transaction_date.date() > next_transaction_date.date():
                 with spending_day_divider_cols[0]:
-                    st.text("")
+                    st.markdown("")
                     st.text(f"{next_transaction_date.strftime('%a, %d %b')}")
                 with spending_day_divider_cols[1]:
                     st.divider()

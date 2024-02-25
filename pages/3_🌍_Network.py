@@ -42,13 +42,13 @@ def _render():
         for latest_message in st.session_state["latest_messages"].data:
             message_counter += 1
             if message_counter >= 7:
-                st.text("...")
+                st.markdown("...")
                 break
 
             chat_message = st.chat_message("user")
-            chat_message_cols = chat_message.columns([0.025, 1, 0.15])
+            chat_message_cols = chat_message.columns([0.025, 1, 0.175])
             with chat_message_cols[1]:
-                st.write(latest_message["content"])
+                st.markdown(latest_message["content"])
                 def _toggle_saved_message(_latest_message=latest_message):
                     if _latest_message["id"] in mapped_saved_message_refs:
                         sb_client.table("saved_messages").delete().eq("fk_message_id", _latest_message["id"]).execute()
@@ -78,7 +78,7 @@ def _render():
             chat_message = st.chat_message("user")
             chat_message_cols = chat_message.columns([0.025, 1, 0.1])
             with chat_message_cols[1]:
-                st.write(saved_message["content"])
+                st.markdown(saved_message["content"])
                 def _remove_saved_message(_saved_message=saved_message):
                     sb_client.table("saved_messages").delete().eq("fk_message_id", _saved_message["id"]).execute()
                     st.toast("Removed from saved messages", icon="✅")

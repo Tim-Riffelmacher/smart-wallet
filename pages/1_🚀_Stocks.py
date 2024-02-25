@@ -31,22 +31,22 @@ def _render():
     info_area_cols = st.columns([1, 1])
     with info_area_cols[0]:
         st.caption("Identification")
-        st.write(f"ISIN: **{selected_ticker.isin}**")
+        st.markdown(f"ISIN: **{selected_ticker.isin}**")
     with info_area_cols[1]:
         st.caption("Link")
-        st.write(f"Website: **{selected_ticker.info['website']}**")
+        st.markdown(f"Website: **{selected_ticker.info['website']}**")
 
     info_area_cols = st.columns([1, 1])
     with info_area_cols[0]:
         st.caption("Location")
-        st.write(f"Address: **{selected_ticker.info['address1']}**")
-        st.write(f"City: **{selected_ticker.info['city']}** (**{selected_ticker.info['zip']}**)")
-        st.write(f"State: **{selected_ticker.info['state'] if 'state' in selected_ticker.info else '-'}**")
-        st.write(f"Country: **{selected_ticker.info['country']}**")
+        st.markdown(f"Address: **{selected_ticker.info['address1']}**")
+        st.markdown(f"City: **{selected_ticker.info['city']}** (**{selected_ticker.info['zip']}**)")
+        st.markdown(f"State: **{selected_ticker.info['state'] if 'state' in selected_ticker.info else '-'}**")
+        st.markdown(f"Country: **{selected_ticker.info['country']}**")
     with info_area_cols[1]:
         st.caption("Sector")
-        st.write(f"Sector: **{selected_ticker.info['sector']}**")
-        st.write(f"Industry: **{selected_ticker.info['industry']}**")
+        st.markdown(f"Sector: **{selected_ticker.info['sector']}**")
+        st.markdown(f"Industry: **{selected_ticker.info['industry']}**")
 
 
     ###
@@ -65,7 +65,7 @@ def _render():
     st.caption("Filter")
     filter_area_cols = st.columns([0.5, 1])
     with filter_area_cols[0]:
-        selected_agg_method = filter_area_cols[0].selectbox(
+        selected_agg_method = st.selectbox(
             'Aggregation',
             ('Open', 'High', 'Low', 'Close'))
     with filter_area_cols[1]:
@@ -125,11 +125,11 @@ def _render():
         news_cols = st.columns([1, 1, 1])
         with news_cols[0]:
             if "thumbnail" in news:
-                st.image(news['thumbnail']['resolutions'][0]["url"], width=150)
+                st.image(news["thumbnail"]["resolutions"][0]["url"], width=150)
         with news_cols[1]:
-            st.write(news['title'])
-            st.write(f'by {news["publisher"]}')
+            st.markdown(f"**{news['title']}**")
+            st.markdown(f"by {news['publisher']}")
         with news_cols[2]:
-            st.write(news["link"])
+            st.markdown(news["link"])
 
 Page("Stocks", "Get latest stock news", _render)
