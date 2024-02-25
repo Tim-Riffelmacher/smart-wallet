@@ -3,6 +3,12 @@ from utils.Connection import sb_client
 import asyncio
 
 def AuthenticatedPage(title, sidebar_title, render, rerender = None, rerender_timeout = 5):
+    """
+    Builds an authenticated page with the given title, sidebar title and render callback.
+    If the user is not logged in it shows the login/register form instead of the actual page.
+    A rerender callback can also be specified that is called every x seconds according to the rerender timeout.
+    It indicates whether the page should be reloaded due to new data available.
+    """
     ###
     # HEADER & METADATA
     ###
@@ -24,7 +30,7 @@ def AuthenticatedPage(title, sidebar_title, render, rerender = None, rerender_ti
         with login_area_columns[1]:
             email = st.text_input("Email")
             password = st.text_input("Password", type="password")
-            st.text("") 
+            st.markdown("") 
             if st.session_state["show_login_form"]:
                 def _login():
                     try:
@@ -45,6 +51,7 @@ def AuthenticatedPage(title, sidebar_title, render, rerender = None, rerender_ti
                             "password": password,
                         })
                         st.toast("You are registered now", icon="✅")
+                        _show_login_form(True)
                     except Exception:
                         st.toast("Your email needs to be valid and your password must contain at least 6 characters", icon="❌")
                 st.button("Register", type="primary", use_container_width=True, on_click=_register)
