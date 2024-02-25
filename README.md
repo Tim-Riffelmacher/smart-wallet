@@ -95,7 +95,7 @@ In this section, users are presented with a list of the latest news concerning t
 
 ![](./resources/wallet_list.png)
 
-On this page, users can track their expenditures (and income). At the top of the page, set the desired time interval for observing financial activities. The bottom section displays a list of expenditures made within this specified timeframe. Clicking on a spending entry expands it, revealing additional details, including any provided reasons, and offering the option to delete it by clicking the _Remove_ button. To add a new spending, go to the top of the list, enter the amount, provide an optional reason, and select a category. Subsequently, click the _Add_ button to save the new entry. For a more detailed analysis of how your total finances have changed over time, navigate to the _Chart_ tab.
+On this page, users can track their expenditures (and income). At the top of the page, set the desired time interval for observing financial activities. The bottom section displays a list of expenditures made within this specified timeframe. Clicking on a spending entry expands it, revealing additional details, including any provided reason, and offering the option to delete it by clicking the _Remove_ button. To add a new spending, go to the top of the list, enter the amount, provide an optional reason, and select a category. Subsequently, click the _Add_ button to save the new entry. For a more detailed analysis of how your total finances have changed over time, navigate to the _Chart_ tab.
 
 ![](./resources/wallet_chart.png)
 
@@ -115,7 +115,7 @@ In this tab, users can view their saved messages. Moreover, they have the option
 
 ![](./resources/profile.png)
 
-Here users can update their personal settings, including their first and last names. The first name is displayed when posting a message on the network page.
+Here users can update their personal settings, including their first and last name. The first name is displayed when posting a message on the network page.
 
 ### Log In & Sign Up
 
@@ -131,13 +131,13 @@ This section assesses both the advantages and disadvantages of employing Streaml
 
 #### Fast & Easy Development
 
-One of the most significant advantages of using Streamlit lies in its minimal learning curve, allowing users to comprehend its functionality and develop web applications in a short period. The Streamlit Python library is remarkably straightforward, eliminating the need to understand every intricate concept. Proficiency in implementing components, such as buttons and inputs, along with understanding the control flow of Streamlit (data distribution and management), equips users to create web applications with essential functionality.
+One of the most significant advantages of using Streamlit lies in its minimal learning curve, allowing developers to comprehend its functionality and develop web applications in a short period. The Streamlit Python library is remarkably straightforward, eliminating the need to understand every intricate concept. Proficiency in implementing components, such as buttons and inputs, along with understanding the control flow of Streamlit (data distribution and management), equips developers to create web applications with essential functionality.
 
 Moreover, Streamlit significantly accelerates the development process. Unlike traditional web application development, there is no requirement to dive into CSS for aesthetic enhancements; Streamlit takes care of design, ensuring a visually appealing interface. Additionally, diverse data types can effortlessly be presented using various chart types, requiring minimal effort on the part of the developer.
 
 #### Data Presentation
 
-As previously highlighted, Streamlit excels in presenting diverse data types through a wide array of chart options. Whether it's simple line charts, scatterplots, or complex graphs, Streamlit supports them all. The inclusion of third-party extensions further expands the available charting options, streamlining the development process and enabling developers to concentrate on data processing, rather than spending time on presentation details. Additionally, Streamlit facilitates easy experimentation with different chart types, allowing developers to explore various visualizations without significant time investment.
+As previously highlighted, Streamlit excels in presenting diverse data types through a wide array of chart options. Whether it's simple line charts, scatterplots, or complex graphs, Streamlit supports them all. The inclusion of third-party extensions further expands the available charting options, streamlining the development process and enabling developers to concentrate on data processing, rather than spending time on presentation details. Additionally, Streamlit facilitates experimentation with different chart types, allowing developers to explore various visualizations without significant time investment.
 
 Example:
 
@@ -151,25 +151,25 @@ Result:
 
 #### Good Documentation
 
-The Streamlit [documentation](https://docs.streamlit.io/) stands out for its simplicity and clarity. Firstly, it provides a comprehensive introduction that facilitates a clear understanding of Streamlit's main concepts. Secondly, the API guide is well-structured and easily understandable, allowing users to quickly locate and access the information they need. Additionally, the documentation offers a convenient [cheatsheet](https://docs.streamlit.io/library/cheatsheet) that provides a overview of the most crucial API calls.
+The Streamlit [documentation](https://docs.streamlit.io/) stands out for its simplicity and clarity. Firstly, it provides a comprehensive introduction that facilitates a clear understanding of Streamlit's main concepts. Secondly, the API guide is well-structured and easily understandable, allowing developers to quickly locate and access the information they need. Additionally, the documentation offers a convenient [cheatsheet](https://docs.streamlit.io/library/cheatsheet) that provides a overview of the most crucial API calls.
 
 #### Uniform Design
 
-As mentioned earlier, Streamlit simplifies the design process by eliminating the need to create a design system or concept, followed by the development of reusable and uniform components (e.g. buttons, input fields, etc.). Instead, Streamlit provides pre-styled components that are ready to use, sparing developers from the initial design groundwork. While all components come with default styles, the Streamlit library offers some customization options, allowing users to adjust the components to their specific use cases — whether it's changing button labels, adjusting input placeholders, or more.
+As mentioned earlier, Streamlit simplifies the design process by eliminating the need to create a design system or concept, followed by the development of reusable and uniform components (e.g. buttons, input fields, etc.). Instead, Streamlit provides pre-styled components that are ready to use, sparing developers from the initial design groundwork. While all components come with default styles, the Streamlit library offers some customization options, allowing developers to adjust the components to their specific use cases — whether it's changing button labels, adjusting input placeholders, or more.
 
-In some instances, it might be beneficial to organize a composition of components in a reusable library. Particularly when dealing with repetitive elements like a start-to-end date input across multiple pages, reducing code duplication. Additionally, Streamlit's [theming](https://docs.streamlit.io/library/advanced-features/theming) capabilities allow for global adjustments, enabling users to specify primary and secondary colors, fonts, and other stylistic elements that apply to all Streamlit components.
+In some instances, it might be beneficial to organize a composition of components in a reusable library. Particularly when dealing with repetitive elements like a start-to-end date input across multiple pages, reducing code duplication. Additionally, Streamlit's [theming](https://docs.streamlit.io/library/advanced-features/theming) capabilities allow for global adjustments, enabling developers to specify primary and secondary colors, fonts, and other stylistic elements that apply to all Streamlit components.
 
 ### Disadvantages
 
 #### Confusing Session State
 
-In a general context, the rendered pages within Streamlit are inherently stateless. To preserve state information, the utilization of Streamlit's provided [session state](https://docs.streamlit.io/library/api-reference/session-state) becomes imperative. This operates as a key-value store with an indefinite growth capacity. Consequently, managing state complexity requires precise documentation to prevent it from spiraling out of control, necessitating clear records of the stored information within the session state.
+In general, the rendered pages within Streamlit are inherently stateless. To preserve state information, the utilization of Streamlit's provided [session state](https://docs.streamlit.io/library/api-reference/session-state) becomes imperative. This operates as a key-value store with an indefinite growth capacity. Consequently, managing state complexity requires precise documentation to prevent it from spiraling out of control, necessitating clear records of the stored information within the session state.
 
 #### Poor Styling Options
 
 The Streamlit components offer only a restricted array of styling options. Primarily, the available choices are confined to two colors — namely, the primary and secondary color predetermined by the global theme. The absence of direct interaction with the underlying CSS of these components leaves developers with no option but to implement pure HTML code for extended customization. A further example for Streamlit's poor styling options: Achieving the horizontal centering of a component lacks a straightforward option. Instead, the developer must utilize a column layout approach, placing the component within the central column and adjusting its width to match that of the column.
 
-In addition to that Streamlit produces very unresponsive web applications. Thus making one web application that fits for mobile devices and PC at the same time is hardly achievable.
+Furthermore, Streamlit tends to generate web applications that have a lack of responsiveness, making it challenging to create a single application suitable for both mobile devices and PCs at the same time.
 
 #### Poor Render Performance
 
@@ -197,10 +197,10 @@ is currently not possible within callbacks. The absence of this option poses lim
 
 #### Input Field Confirmation
 
-Typically, when entering information into an input field and promptly pressing an action button (e.g. save), there is a potential issue where the most recent data in the input field might not be accessible at the time of button click. This is caused by the behavior of the input field, which updates the data only upon pressing enter or unfocusing the input field. Consequently, this can lead to problematic race conditions. This problem cannot be solved easily at present.
+Typically, when entering information into an input field and promptly pressing an action button (e.g. save), there is a potential issue where the most recent data in the input field might not be accessible at the time of button click. This is caused by the behavior of the input field, which updates the data only upon pressing enter or unfocusing the input field. Consequently, this can lead to problematic race conditions. This issue cannot be solved easily at present.
 
 ## Summary
 
-In summary, Streamlit serves as an entry-level framework, facilitating the entry of non-technical users into web application development without significant concern for technical details. It provides an extensive collection of reusable components and ensures a cohesive design, imparting a polished look-and-feel to the web application. Moreover, Streamlit excels in effortlessly visualizing large datasets through various chart options.
+In summary, Streamlit serves as an entry-level framework, facilitating the entry of non-technical people into web application development without significant concern for technical details. It provides an extensive collection of reusable components and ensures a cohesive design, imparting a polished look-and-feel to the web application. Moreover, Streamlit excels in effortlessly visualizing large datasets through various chart options.
 
 However, it comes with certain limitations. The framework lacks the flexibility found in other web application frameworks, as it is notably constrained to its predefined components with limited customization options. Additionally, Streamlit falls short in terms of tooling and performance compared to its counterparts. Consequently, Streamlit proves most suitable for scenarios where a static data-presenting web application with minimal interaction requirements is needed.
