@@ -79,13 +79,14 @@ def _render():
                 st.toast("Removed spending", icon="✅")
             spending_expander.button(label="❌ Remove", key=f"key-remove-btn-{transaction['id']}", on_click=_remove_spending)
     with spending_area_tabs[1]:
-        total_money_course = pd.DataFrame(all_transaction_amounts.data)
-        total_money_course["created_at"] = pd.to_datetime(total_money_course["created_at"]).dt.tz_convert(ZoneInfo(time.tzname[0])).dt.tz_localize(None).dt.tz_localize(datetime.timezone.utc)
-        total_money_course.set_index("created_at", inplace=True)
-        total_money_course["amount"] = total_money_course["amount"] / 100
-        total_money_course["amount"] = total_money_course["amount"].cumsum()
-        total_money_course = total_money_course[(total_money_course.index >= pd.to_datetime(selected_start_datetime)) & (total_money_course.index <= pd.to_datetime(selected_end_datetime))]
-        total_money_course.rename(columns={ "amount": "Money in $" }, inplace=True)
-        st.line_chart(total_money_course, y="Money in $")
+        if len(all_transaction_amounts.data) != 0:
+            total_money_course = pd.DataFrame(all_transaction_amounts.data)
+            total_money_course["created_at"] = pd.to_datetime(total_money_course["created_at"]).dt.tz_convert(ZoneInfo(time.tzname[0])).dt.tz_localize(None).dt.tz_localize(datetime.timezone.utc)
+            total_money_course.set_index("created_at", inplace=True)
+            total_money_course["amount"] = total_money_course["amount"] / 100
+            total_money_course["amount"] = total_money_course["amount"].cumsum()
+            total_money_course = total_money_course[(total_money_course.index >= pd.to_datetime(selected_start_datetime)) & (total_money_course.index <= pd.to_datetime(selected_end_datetime))]
+            total_money_course.rename(columns={ "amount": "Money in $" }, inplace=True)
+            st.line_chart(total_money_course, y="Money in $")
 
 AuthenticatedPage("Wallet", "Track your spendings", _render)

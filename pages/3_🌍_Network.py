@@ -67,7 +67,7 @@ def _render():
             with chat_message_cols[2]:
                 st.text(Utils.supabase_timestamp_to_datetime(latest_message['created_at']).astimezone(ZoneInfo(time.tzname[0])).strftime('%H:%M'))
                 profiles = sb_client.table("profiles").select("first_name").eq("fk_user_id", latest_message["fk_user_id"]).execute()
-                if len(profiles.data) != 0:
+                if len(profiles.data) != 0 and profiles.data[0]['first_name'] != None:
                     st.text(f"({profiles.data[0]['first_name']})")
                 else:
                     st.text("(Unknown)")
