@@ -35,6 +35,6 @@ def _render():
     others_area_cols = st.columns([1, 1, 1, 1])
     with others_area_cols[0]:
         st.subheader("📘 Docs")
-        st.page_link("https://github.com/Tim-Riffelmacher/Pathing-Sandbox/blob/master/README.md", label="⏵ Read", use_container_width=True)
+        st.page_link("https://github.com/Tim-Riffelmacher/smart-wallet/blob/main/README.md", label="⏵ Read", use_container_width=True)
 
 Page("Dashboard", "Navigate to all pages", _render)
