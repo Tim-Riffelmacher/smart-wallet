@@ -197,7 +197,7 @@ is currently not possible within callbacks. The absence of this option poses lim
 
 #### Input Field Confirmation
 
-Typically, when entering information into an input field and promptly pressing an action button (e.g. save), there is a potential issue where the most recent data in the input field might not be accessible at the time of button click. This is caused by the behavior of the input field, which updates the data only upon pressing enter or unfocusing the input field. Consequently, this can lead to problematic race conditions.
+Typically, when entering information into an input field and promptly pressing an action button (e.g. save), there is a potential issue where the most recent data in the input field might not be accessible at the time of button click. This is caused by the behavior of the input field, which updates the data only upon pressing enter or unfocusing the input field. Consequently, this can lead to problematic race conditions. This problem cannot be solved easily at present.
 
 ## Summary
 
