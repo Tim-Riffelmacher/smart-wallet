@@ -46,7 +46,7 @@ In the following the top-level folders and files present in this repository are 
 
 ## Installation
 
-Firstly, ensure that [Python3](https://www.python.org/downloads/) is installed on your system. Afterwards, proceed to install the required dependencies by executing the command `pip3 install -r requirements.txt` in the root directory of the repository. Once the dependencies are installed, initiate the web application by executing `streamlit run pages/Dashboard.py`. If the streamlit command is not recognized, you may need to add it to the `$PATH`, or consider creating a [virtual Python environment](https://docs.python.org/3/library/venv.html).
+Firstly, ensure that [Python3](https://www.python.org/downloads/) is installed on your system. Afterwards, proceed to install the required dependencies by executing the command `pip3 install -r requirements.txt` in the root directory of the repository. Once the dependencies are installed, initiate the web application by executing `streamlit run Dashboard.py` (A browser window should open automatically, otherwise the serving details are posted in the console). If the streamlit command is not recognized, you may need to add it to the `$PATH`, or consider creating a [virtual Python environment](https://docs.python.org/3/library/venv.html).
 
 ## Manual
 
